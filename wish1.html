@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday Sabi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>
+        "The world is a little more beautiful because you're in it"
+    </h1>
+
+    <div class="gift" onclick="opengift()">
+
+        <div class="lid">
+            <div class="ribbon"></div>
+        </div>
+
+        <div class="box">
+            <div class="ribbon"></div>
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function opengift() {
+
+            const gift = document.querySelector(".gift");
+
+            // Prevent clicking again
+            if (gift.classList.contains("open")) {
+                return;
+            }
+
+            // Open the gift
+            gift.classList.add("open");
+
+            // Start POP after the lid opens
+            setTimeout(() => {
+                createPop();
+            }, 350);
+        }
+
+
+        function createPop() {
+
+            const gift = document.querySelector(".gift");
+
+            const rect = gift.getBoundingClientRect();
+
+            // POP starts from the gift
+            const startX = rect.left + rect.width / 2;
+            const startY = rect.top + rect.height * 0.35;
+
+
+            const colors = [
+                "#ff4f91",
+                "#ff69b4",
+                "#ff1493",
+                "#ffd166",
+                "#ff8c42",
+                "#7b61ff",
+                "#00c2ff",
+                "#5ee6a8",
+                "#ffffff",
+                "#ff3b30"
+            ];
+
+
+            // Create POP pieces
+            for (let i = 0; i < 180; i++) {
+
+                const piece = document.createElement("div");
+
+                piece.classList.add("pop-piece");
+
+
+                // Random colour
+                piece.style.backgroundColor =
+                    colors[
+                        Math.floor(Math.random() * colors.length)
+                    ];
+
+
+                // Random size
+                piece.style.width =
+                    (Math.random() * 9 + 6) + "px";
+
+                piece.style.height =
+                    (Math.random() * 16 + 8) + "px";
+
+
+                // Starting position
+                piece.style.setProperty(
+                    "--start-x",
+                    startX + "px"
+                );
+
+                piece.style.setProperty(
+                    "--start-y",
+                    startY + "px"
+                );
+
+
+                // Spread across entire screen
+                const targetX =
+                    (Math.random() * window.innerWidth * 1.6)
+                    - (window.innerWidth * 0.8);
+
+                const targetY =
+                    (Math.random() * window.innerHeight * 1.6)
+                    - (window.innerHeight * 0.8);
+
+
+                piece.style.setProperty(
+                    "--move-x",
+                    targetX + "px"
+                );
+
+                piece.style.setProperty(
+                    "--move-y",
+                    targetY + "px"
+                );
+
+
+                // Random rotation
+                piece.style.setProperty(
+                    "--rotate",
+                    (Math.random() * 1400 - 700) + "deg"
+                );
+
+
+                // Different speed
+                piece.style.setProperty(
+                    "--duration",
+                    (Math.random() * 0.8 + 1.4) + "s"
+                );
+
+
+                // Small random delay
+                piece.style.animationDelay =
+                    (Math.random() * 0.18) + "s";
+
+
+                document.body.appendChild(piece);
+
+
+                // Remove after animation
+                setTimeout(() => {
+                    piece.remove();
+                }, 2500);
+
+            }
+
+
+            // Screen flash
+            const flash = document.createElement("div");
+
+            flash.classList.add("pop-flash");
+
+            document.body.appendChild(flash);
+
+
+            setTimeout(() => {
+                flash.classList.add("show");
+            }, 30);
+
+
+            setTimeout(() => {
+                flash.remove();
+            }, 500);
+
+
+            /*
+            =========================================
+            GO TO SECOND PAGE
+            =========================================
+
+            POP finishes around 2.5 seconds.
+            Then automatically open wish2.html.
+            */
+
+            setTimeout(() => {
+
+                window.location.href = "wish2.html";
+
+            }, 2700);
+
+        }
+
+    </script>
+
+</body>
+
+</html>
