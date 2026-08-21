@@ -1,0 +1,502 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: #f7b6ca;
+}
+
+
+/* =========================
+   MAIN PAGE
+========================= */
+
+.page2 {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,255,255,0.4),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(255,255,255,0.3),
+            transparent 30%
+        ),
+        #f7b6ca;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation: pageAppear 1.5s ease-out;
+}
+
+@keyframes pageAppear {
+    from {
+        opacity: 0;
+        transform: scale(1.04);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================
+   TOY
+========================= */
+
+.toy-area {
+    position: absolute;
+    left: 5%;
+    bottom: 5%;
+    width: 42%;
+    max-width: 360px;
+
+    opacity: 0;
+
+    animation:
+        toyAppear 1.5s cubic-bezier(.2,.8,.2,1) 0.5s forwards;
+}
+
+.toy {
+    width: 100%;
+    display: block;
+
+    filter:
+        drop-shadow(
+            0 15px 18px
+            rgba(120,40,70,0.18)
+        );
+
+    animation:
+        toyFloat 3s ease-in-out 2s infinite;
+}
+
+@keyframes toyAppear {
+
+    0% {
+        opacity: 0;
+        transform:
+            translateX(-100px)
+            scale(0.75)
+            rotate(-5deg);
+    }
+
+    70% {
+        opacity: 1;
+        transform:
+            translateX(10px)
+            scale(1.03)
+            rotate(1deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translateX(0)
+            scale(1)
+            rotate(0);
+    }
+}
+
+@keyframes toyFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+    position: absolute;
+    right: 7%;
+
+    width: 45%;
+    max-width: 520px;
+
+    text-align: center;
+    color: #762442;
+
+    opacity: 0;
+
+    animation:
+        messageAppear 1.6s cubic-bezier(.2,.8,.2,1) 0.8s forwards;
+}
+
+@keyframes messageAppear {
+
+    0% {
+        opacity: 0;
+        transform:
+            translateX(100px)
+            scale(0.92);
+    }
+
+    70% {
+        opacity: 1;
+        transform:
+            translateX(-5px)
+            scale(1.02);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translateX(0)
+            scale(1);
+    }
+}
+
+
+/* =========================
+   LITTLE TEXT
+========================= */
+
+.little-text {
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+
+    font-style: italic;
+
+    opacity: 0;
+
+    animation:
+        littleAppear 1s
+        ease-out
+        1.5s
+        forwards;
+}
+
+@keyframes littleAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   BIRTHDAY TITLE
+========================= */
+
+h1 {
+    font-family: "Trebuchet MS", sans-serif;
+
+    font-size: clamp(
+        38px,
+        5vw,
+        65px
+    );
+
+    color: #c6285b;
+
+    margin-bottom: 20px;
+
+    opacity: 0;
+
+    animation:
+        birthdayTitle 1.3s
+        cubic-bezier(.2,.8,.2,1)
+        1.8s
+        forwards;
+}
+
+@keyframes birthdayTitle {
+
+    0% {
+        opacity: 0;
+        transform:
+            scale(0.5)
+            translateY(20px);
+    }
+
+    60% {
+        opacity: 1;
+        transform:
+            scale(1.08)
+            translateY(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            scale(1);
+    }
+}
+
+
+/* =========================
+   BIRTHDAY MESSAGE
+   ========================= */
+
+.birthday-text {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.7;
+    margin: 12px 0;
+
+    color: #762442;
+
+    opacity: 0;
+
+    animation:
+        textAppear 1s ease-out 2.5s forwards;
+}
+
+/* Second message appears slightly later */
+.birthday-text:nth-of-type(3) {
+    animation-delay: 2.9s;
+}
+
+
+/* Message animation */
+
+@keyframes textAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================
+   HEART LINE
+========================= */
+
+.heart-line {
+
+    margin-top: 22px;
+
+    color: #c6285b;
+
+    font-size: 25px;
+
+    letter-spacing: 8px;
+
+    opacity: 0;
+
+    animation:
+        heartLineAppear 1s ease-out
+        3.4s
+        forwards,
+        heartPulse 2s ease-in-out
+        4.4s
+        infinite;
+}
+
+@keyframes heartLineAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            scale(0.5);
+    }
+
+    to {
+        opacity: 0.8;
+        transform:
+            scale(1);
+    }
+}
+
+@keyframes heartPulse {
+
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.12);
+        opacity: 1;
+    }
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart {
+
+    position: absolute;
+
+    color: #c6285b;
+
+    font-size: 35px;
+
+    opacity: 0;
+
+    animation:
+        heartEntrance 1s ease-out forwards,
+        floatingHeart 4s ease-in-out 1s infinite;
+}
+
+.h1 {
+    top: 9%;
+    left: 8%;
+    animation-delay: 0.3s, 1.3s;
+}
+
+.h2 {
+    top: 13%;
+    right: 10%;
+    font-size: 45px;
+    animation-delay: 0.5s, 1.5s;
+}
+
+.h3 {
+    top: 47%;
+    left: 3%;
+    font-size: 25px;
+    animation-delay: 0.7s, 1.7s;
+}
+
+.h4 {
+    bottom: 10%;
+    left: 45%;
+    font-size: 30px;
+    animation-delay: 0.9s, 1.9s;
+}
+
+.h5 {
+    bottom: 20%;
+    right: 7%;
+    font-size: 42px;
+    animation-delay: 1.1s, 2.1s;
+}
+
+.h6 {
+    top: 65%;
+    right: 44%;
+    font-size: 22px;
+    animation-delay: 1.3s, 2.3s;
+}
+
+@keyframes heartEntrance {
+
+    from {
+        opacity: 0;
+        transform:
+            scale(0)
+            rotate(-30deg);
+    }
+
+    to {
+        opacity: 0.65;
+        transform:
+            scale(1)
+            rotate(0);
+    }
+}
+
+@keyframes floatingHeart {
+
+    0%, 100% {
+        transform:
+            translateY(0)
+            rotate(-5deg);
+    }
+
+    50% {
+        transform:
+            translateY(-15px)
+            rotate(5deg);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .page2 {
+        display: block;
+    }
+
+    .toy-area {
+
+        left: 50%;
+        bottom: 43%;
+
+        width: 58%;
+
+        transform:
+            translateX(-50%);
+    }
+
+    .message {
+
+        left: 50%;
+        right: auto;
+
+        bottom: 6%;
+
+        width: 88%;
+
+        transform:
+            translateX(-50%);
+    }
+
+    .little-text {
+        font-size: 13px;
+        margin-bottom: 7px;
+    }
+
+    h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+
+    .birthday-text {
+        font-size: 15px;
+        line-height: 1.5;
+        margin: 6px 0;
+    }
+
+    .heart-line {
+        margin-top: 12px;
+    }
+}
